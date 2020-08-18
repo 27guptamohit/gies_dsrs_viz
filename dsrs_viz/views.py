@@ -39,6 +39,7 @@ class D3JSList(View):
 
     def get(self, request):
         return render(
+            request,
             'dsrs_viz/d3_js_list.html',
             {'d3_js_list': D3_js.objects.all()}
         )
@@ -48,6 +49,7 @@ class ReactJSList(View):
 
     def get(self, request):
         return render(
+            request,
             'dsrs_viz/react_js_list.html',
             {'react_js_list': React_js.objects.all()}
         )
@@ -57,6 +59,7 @@ class D3ReactJSList(View):
 
     def get(self, request):
         return render(
+            request,
             'dsrs_viz/d3_react_js_list.html',
             {'d3_react_js_list': D3_react_js.objects.all()}
         )
