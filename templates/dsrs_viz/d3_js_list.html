@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'dsrs_viz/base.html' %}
 
-</body>
-</html>
+{% block title %}
+    D3 JS
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    D3_js_list
+</h1>
+
+<ul>
+    {% for d3_js in d3_js_list %}
+
+        <li>
+        <a href=""> {{ d3_js }}</a>
+        </li>
+
+    {% endfor %}
+</ul>
+
+{% endblock %}

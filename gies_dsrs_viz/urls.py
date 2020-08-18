@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from dsrs_viz.views import  (
+    d3_js_list_view,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('d3_js/', d3_js_list_view),
 ]
