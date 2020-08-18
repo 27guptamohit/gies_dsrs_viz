@@ -13,10 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
+from .views import redirect_root_view
 
+# redirect_root_view will redirect the user to the designated home page
+# which the user will enter in the gies_dsrs_viz/views.py
 urlpatterns = [
+    path('', redirect_root_view),
     path('admin/', admin.site.urls),
     path('', include('dsrs_viz.urls'))
 
