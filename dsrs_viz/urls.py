@@ -14,10 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from dsrs_viz.views import (D3JSList,
+                            ReactJSList,
+                            D3ReactJSList)
 
+
+# The url pattern names will be helpful while pointing back from href attribute
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('dsrs_viz.urls'))
+    path('d3_js/', D3JSList.as_view(),
+         name='dsrs_viz_d3_js_list_urlpattern'),
 
+    path('react_js/', ReactJSList.as_view(),
+         name='dsrs_viz_react_js_list_urlpattern'),
+
+    path('d3_react_js/', D3ReactJSList.as_view(),
+         name='dsrs_viz_d3_react_js_list_urlpattern'),
 ]
