@@ -1,0 +1,50 @@
+<!--I am inheriting this template into the parent template base.html-->
+{% extends 'dsrs_viz/base.html' %}
+
+{% block title %}
+    React JS
+{% endblock %}
+
+
+{% block content %}
+
+    {% block content-header %}
+        <div class="database-headers">
+            <h3> Name: D3-React JS</h3>
+        </div>
+
+    {% endblock %}
+    <!--This will contain the table-->
+    {% block content-table %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th scope="row" class='table-detail-list-view'>Figure Number</th>
+                    <td>{{ d3_d3_react_js.figure_no }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class='table-detail-list-view'>Library Name</th>
+                    <td>{{ d3_react_js.library_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class='table-detail-list-view'>Heading</th>
+                    <td>{{ d3_react_js.heading }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class='table-detail-list-view'>Description</th>
+                    <td>{{ d3_react_js.description }}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row" class='table-detail-list-view'>JS Code</th>
+                    <td>{{ d3_react_js.js_code }}</td>
+                </tr>
+
+
+
+            </table>
+        </div>
+
+    {% endblock %}
+
+{% endblock %}
