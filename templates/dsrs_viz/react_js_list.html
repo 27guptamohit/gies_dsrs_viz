@@ -1,25 +1,26 @@
 {% extends 'dsrs_viz/base.html' %}
 
 {% block title %}
-    D3 JS
+    React JS
 {% endblock %}
 
 {% block content %}
 
     <h1>
-        D3 JS List
+        React JS List
     </h1>
 
     <ul>
-        {% for d3_js in d3_js_list %}
+        {% for react_js in react_js_list %}
             <div class="table-responsive">
                 <li>
-                    <a href=""> {{ d3_js }}</a>
+                    <a href=""> {{ react_js }}</a>
                 </li>
             </div>
 
-
         {% endfor %}
+
+
     </ul>
 
 {% endblock %}

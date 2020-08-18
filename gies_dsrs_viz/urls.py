@@ -17,9 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from dsrs_viz.views import  (
     d3_js_list_view,
+react_js_list_view,
+d3_react_js_list_view,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('d3_js/', d3_js_list_view),
+    path('react_js/', react_js_list_view),
+    path('d3_react_js/', d3_react_js_list_view),
+
 ]
