@@ -1,0 +1,55 @@
+{% extends 'dsrs_viz/base.html' %}
+
+{% block title %}
+    Delete Entry
+{% endblock %}
+
+{% block content %}
+
+    <form class="delete-confirmation-objects"
+          action="{{ d3_js.get_delete_url }}"
+          method="post"
+          style="margin-top:10%;">
+        {% csrf_token %}
+        {% block content-header %}
+
+            <h3>Are you sure that you want to delete
+                the below data:
+            </h3>
+            <br>
+            <br>
+            <li>
+                <h6>{{ d3_js.figure_no }}</h6>
+            </li>
+            <li>
+                <h6>{{ d3_js.library_name }}</h6>
+            </li>
+            <li>
+                <h6>{{ d3_js.author }}</h6>
+            </li>
+            <li>
+                <h6>{{ d3_js.heading }}</h6>
+            </li>
+                        <li>
+                <h6>{{ d3_js.description }}</h6>
+            </li>
+            <br>
+            <br>
+
+
+            <a href="{{ d3_js.get_absolute_url }}">
+                <button class="btn btn-primary"
+                        style="margin-right:50px;">
+                    Cancel
+                </button>
+            </a>
+
+            <button class="btn btn-primary" type="submit">
+                Delete Data
+            </button>
+        {% endblock %}
+    </form>
+
+
+
+{% endblock %}

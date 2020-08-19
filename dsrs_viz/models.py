@@ -24,6 +24,11 @@ class D3_js(models.Model):
         return reverse('dsrs_viz_d3_js_update_urlpattern',
                        kwargs={'pk':self.pk})
 
+    def get_delete_url(self):
+        return reverse('dsrs_viz_d3_js_delete_urlpattern',
+                       kwargs={'pk':self.pk})
+
+
     class Meta:
         ordering = ['figure_no', 'library_name', 'heading']
         unique_together = ['figure_no', 'library_name', 'heading']
@@ -57,6 +62,10 @@ class React_js(models.Model):
         return reverse('dsrs_viz_react_js_update_urlpattern',
                        kwargs={'pk':self.pk})
 
+    def get_delete_url(self):
+        return reverse('dsrs_viz_react_js_delete_urlpattern',
+                       kwargs={'pk':self.pk})
+
     class Meta:
         ordering = ['figure_no', 'library_name', 'heading']
         unique_together = ['figure_no', 'library_name', 'heading']
@@ -88,6 +97,10 @@ class D3_react_js(models.Model):
 
     def get_update_url(self):
         return reverse('dsrs_viz_d3_react_js_update_urlpattern',
+                       kwargs={'pk':self.pk})
+
+    def get_delete_url(self):
+        return reverse('dsrs_viz_d3_react_js_delete_urlpattern',
                        kwargs={'pk':self.pk})
 
 

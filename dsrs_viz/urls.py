@@ -19,6 +19,7 @@ from dsrs_viz.views import (D3JSList, ReactJSList, D3ReactJSList,
                             D3JSDetail, ReactJSDetail, D3ReactJSDetail,
                             D3JSCreate, ReactJSCreate, D3ReactJSCreate,
                             D3JSUpdate, ReactJSUpdate, D3ReactJSUpdate,
+                            D3JSDelete, ReactJSDelete, D3ReactJSDelete,
                             )
 
 
@@ -34,6 +35,9 @@ urlpatterns = [
     path('d3_js/<int:pk>/update/',
          D3JSUpdate.as_view(),
          name='dsrs_viz_d3_js_update_urlpattern'),
+    path('d3_js/<int:pk>/delete/',
+         D3JSDelete.as_view(),
+         name='dsrs_viz_d3_js_delete_urlpattern'),
 
 
 
@@ -48,6 +52,8 @@ urlpatterns = [
          name='dsrs_viz_react_js_create_urlpattern'),
     path('react_js/<int:pk>/update/', ReactJSUpdate.as_view(),
          name='dsrs_viz_react_js_update_urlpattern'),
+    path('react_js/<int:pk>/delete/', ReactJSDelete.as_view(),
+         name='dsrs_viz_react_js_delete_urlpattern'),
 
 
 
@@ -60,4 +66,6 @@ urlpatterns = [
          name='dsrs_viz_d3_react_js_create_urlpattern'),
     path('d3_react_js/<int:pk>/update/', D3ReactJSUpdate.as_view(),
          name='dsrs_viz_d3_react_js_update_urlpattern'),
+    path('d3_react_js/<int:pk>/delete/', D3ReactJSDelete.as_view(),
+         name='dsrs_viz_d3_react_js_delete_urlpattern'),
 ]
