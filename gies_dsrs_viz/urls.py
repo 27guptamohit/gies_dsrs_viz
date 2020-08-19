@@ -35,13 +35,6 @@ urlpatterns = [
          name='about_urlpattern'
          ),
 
-    # For vega-lite page
-    path('vega/',
-         TemplateView.as_view(
-             template_name='dsrs_viz/vega.html'),
-         name='vega_urlpattern'
-         ),
-
     # Login Page
     path('login/',
          LoginView.as_view(

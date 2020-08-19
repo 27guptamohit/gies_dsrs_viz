@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+     <!--Linking the static file for bootstrap stored in the static folder-->
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'dsrs_viz/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'dsrs_viz/bootstrap-grid.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'dsrs_viz/bootstrap-reboot.css' %}">
+
 
 
     <style type="text/css" media="screen">
@@ -206,7 +214,7 @@
                                         <p class="card-text">Developed by Mohit Gupta</p>
                                         <!--Enter the link for about.html-->
 
-                                        
+
                                         <a href="{% url 'about_urlpattern' %}" class="btn btn-primary">About Us</a>
                                     </div>
                                     <div class="card-footer text-muted">
@@ -325,10 +333,17 @@
         <!--This is the dark navbar which when clicked on menu button, reveals/collapses-->
         <nav class="navbar navbar-dark bg-dark">
 
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout_urlpattern' %}">
+                    <button class="btn btn-primary" type="submit">Log Out, {{ user.get_username }}</button>
+                </a>
+            {% else %}
 
-            <!--Fix this-->
-            <!--Put the authentication back over here-->
+                <a href="{% url 'login_urlpattern' %}">
+                    <button class="btn btn-primary" type="submit">Log In</button>
+                </a>
 
+            {% endif %}
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse"
