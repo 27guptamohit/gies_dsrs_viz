@@ -11,6 +11,21 @@
     {% block content-header %}
         <div class="database-headers">
             <h3> Name: D3 JS</h3>
+
+            <a href="{{ d3_js.get_update_url }}">
+                <button type="button" class="btn btn-primary">Edit Entry</button>
+            </a>
+            <a href="{{ d3_js.get_delete_url }}">
+                <button type="button" class="btn btn-primary">Delete Entry</button>
+            </a>
+
+            <a href="{{ request.META.HTTP_REFERER|escape }}">
+                <button type="button" class="btn btn-primary"
+                        style="float: right;">
+                    Back
+                </button>
+            </a>
+
         </div>
 
     {% endblock %}
@@ -47,7 +62,6 @@
                     <th scope="row" class='table-detail-list-view'>Notes</th>
                     <td>{{ d3_js.notes }}</td>
                 </tr>
-
 
 
             </table>

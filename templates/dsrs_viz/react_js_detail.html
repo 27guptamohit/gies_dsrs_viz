@@ -11,6 +11,22 @@
     {% block content-header %}
         <div class="database-headers">
             <h3> Name: React JS</h3>
+
+            <a href="{{ react_js.get_update_url }}">
+                <button type="button" class="btn btn-primary">Edit Entry</button>
+            </a>
+            <a href="{{ react_js.get_delete_url }}">
+                <button type="button" class="btn btn-primary">Delete Entry</button>
+            </a>
+
+            <a href="{{ request.META.HTTP_REFERER|escape }}">
+                <button type="button" class="btn btn-primary"
+                        style="float: right;">
+                    Back
+                </button>
+            </a>
+
+
         </div>
 
     {% endblock %}
@@ -47,8 +63,6 @@
                     <th scope="row" class='table-detail-list-view'>Notes</th>
                     <td>{{ react_js.notes }}</td>
                 </tr>
-
-
 
 
             </table>
