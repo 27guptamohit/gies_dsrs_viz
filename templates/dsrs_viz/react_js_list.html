@@ -14,7 +14,7 @@
         {% for react_js in react_js_list %}
             <div class="table-responsive">
                 <li>
-                    <a href=""> {{ react_js }}</a>
+                    <a href="{{ react_js.get_absolute_url }}"> {{ react_js }}</a>
                 </li>
             </div>
 
