@@ -12,12 +12,17 @@
         <div class="database-headers">
             <h3> Name: React JS</h3>
 
+            {% if perms.dsrs_viz.change_react_js %}
             <a href="{{ react_js.get_update_url }}">
                 <button type="button" class="btn btn-primary">Edit Entry</button>
             </a>
+            {% endif %}
+
+            {% if perms.dsrs_viz.delete_react_js %}
             <a href="{{ react_js.get_delete_url }}">
                 <button type="button" class="btn btn-primary">Delete Entry</button>
             </a>
+            {% endif %}
 
             <a href="{{ request.META.HTTP_REFERER|escape }}">
                 <button type="button" class="btn btn-primary"

@@ -9,9 +9,12 @@
      {% block content-header %}
         <div class="database-headers">
             <h3> Data Table: React JS</h3>
+                                    {% if perms.dsrs_viz.view_react_js %}
+
                 <a href="{% url 'dsrs_viz_react_js_create_urlpattern' %}">
                     <button type="button" class="btn btn-primary">Create new entry</button>
                 </a>
+        {% endif %}
         </div>
      {% endblock %}
 
