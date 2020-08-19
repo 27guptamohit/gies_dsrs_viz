@@ -1,7 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponse
 from django.template import loader
+from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
 from .forms import D3JSForm, ReactJSForm, D3ReactJSForm
 from .models import (
@@ -26,17 +29,15 @@ from .models import (
 
 
 # Class based view
-from .utils import ObjectCreateMixin
+from .utils import PageLinksMixin
 
 
-class D3JSList(View):
+class D3JSList(LoginRequiredMixin, PermissionRequiredMixin, PageLinksMixin, ListView):
+    paginate_by = 2
+    model = D3_js
+    permission_required = ''
 
-    def get(self, request):
-        return render(
-            request,
-            'dsrs_viz/d3_js_list.html',
-            {'d3_js_list': D3_js.objects.all()}
-        )
+
 
 
 class D3JSDetail(View):
@@ -54,10 +55,23 @@ class D3JSDetail(View):
         )
 
 
-class D3JSCreate(ObjectCreateMixin, View):
+class D3JSCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = D3JSForm
-    template_name = 'dsrs_viz/d3_js_form.html'
+    model = D3_js
+    permission_required = ''
 
+
+class D3JSUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    form_class = D3JSForm
+    model = D3_js
+    template_name = 'dsrs_viz/d3_js_form_update.html'
+    permission_required = ''
+
+
+class D3JSDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = D3_js
+    success_url = reverse_lazy('dsrs_viz_d3_js_list_urlpattern')
+    permission_required = ''
 
 
 
@@ -72,14 +86,10 @@ class D3JSCreate(ObjectCreateMixin, View):
 #
 
 
-class ReactJSList(View):
-
-    def get(self, request):
-        return render(
-            request,
-            'dsrs_viz/react_js_list.html',
-            {'react_js_list': React_js.objects.all()}
-        )
+class ReactJSList(LoginRequiredMixin, PermissionRequiredMixin, PageLinksMixin, ListView):
+    paginate_by = 2
+    model = React_js
+    permission_required = ''
 
 
 class ReactJSDetail(View):
@@ -97,9 +107,22 @@ class ReactJSDetail(View):
         )
 
 
-class ReactJSCreate(ObjectCreateMixin, View):
+class ReactJSCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = ReactJSForm
-    template_name = 'dsrs_viz/react_js_form.html'
+    model = React_js
+    permission_required = ''
+
+class ReactJSUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    form_class = ReactJSForm
+    model = React_js
+    template_name = 'dsrs_viz/react_js_form_update.html'
+    permission_required = ''
+
+
+class ReactJSDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = React_js
+    success_url = reverse_lazy('dsrs_viz_react_js_list_urlpattern')
+    permission_required = ''
 
 #----------------------------------------------------------
 
@@ -113,14 +136,10 @@ class ReactJSCreate(ObjectCreateMixin, View):
 
 
 
-class D3ReactJSList(View):
-
-    def get(self, request):
-        return render(
-            request,
-            'dsrs_viz/d3_react_js_list.html',
-            {'d3_react_js_list': D3_react_js.objects.all()}
-        )
+class D3ReactJSList(LoginRequiredMixin, PermissionRequiredMixin, PageLinksMixin, ListView):
+    paginate_by = 2
+    model = D3_react_js
+    permission_required = ''
 
 
 class D3ReactJSDetail(View):
@@ -137,6 +156,20 @@ class D3ReactJSDetail(View):
             {'d3_react_js': d3_react_js}
         )
 
-class D3ReactJSCreate(ObjectCreateMixin, View):
+class D3ReactJSCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = D3ReactJSForm
-    template_name = 'dsrs_viz/d3_react_js_form.html'
+    model = D3_react_js
+    permission_required = ''
+
+class D3ReactJSUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    form_class = D3ReactJSForm
+    model = D3_react_js
+    template_name = 'dsrs_viz/d3_react_js_form_update.html.html'
+    permission_required = ''
+
+class D3ReactJSDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = D3_react_js
+    success_url = reverse_lazy('dsrs_viz_d3_react_js_list_urlpattern')
+    permission_required = ''
+
+

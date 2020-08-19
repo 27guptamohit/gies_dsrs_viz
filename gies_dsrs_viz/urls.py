@@ -15,13 +15,46 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
-from .views import redirect_root_view
+from django.views.generic import RedirectView, TemplateView
 
-# redirect_root_view will redirect the user to the designated home page
-# which the user will enter in the gies_dsrs_viz/views.py
 urlpatterns = [
-    path('', redirect_root_view),
+
+    # This link will always open whenever you will open the website.
+    path('',
+         RedirectView.as_view(
+             pattern_name='about_urlpattern',
+             permanent=False
+         )),
+
+    # For about us page
+    path('about/',
+         TemplateView.as_view(
+             template_name='dsrs_viz/about.html'),
+         name='about_urlpattern'
+         ),
+
+    # For vega-lite page
+    path('vega/',
+         TemplateView.as_view(
+             template_name='dsrs_viz/vega.html'),
+         name='vega_urlpattern'
+         ),
+
+    # Login Page
+    path('login/',
+         LoginView.as_view(
+             template_name='dsrs_viz/login.html'),
+         name='login_urlpattern'),
+
+    # Logout Page
+
+    path('logout/',
+         LogoutView.as_view(),
+         name='logout_urlpattern'),
+
+
     path('admin/', admin.site.urls),
     path('', include('dsrs_viz.urls'))
 
