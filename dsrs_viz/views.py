@@ -3,6 +3,7 @@ from django.http.response import HttpResponse
 from django.template import loader
 from django.views import View
 
+from .forms import D3JSForm, ReactJSForm, D3ReactJSForm
 from .models import (
     D3_js,
     React_js,
@@ -25,6 +26,9 @@ from .models import (
 
 
 # Class based view
+from .utils import ObjectCreateMixin
+
+
 class D3JSList(View):
 
     def get(self, request):
@@ -50,6 +54,9 @@ class D3JSDetail(View):
         )
 
 
+class D3JSCreate(ObjectCreateMixin, View):
+    form_class = D3JSForm
+    template_name = 'dsrs_viz/d3_js_form.html'
 
 #----------------------------------------------------------
 # def react_js_list_view(request):
@@ -87,6 +94,10 @@ class ReactJSDetail(View):
         )
 
 
+class ReactJSCreate(ObjectCreateMixin, View):
+    form_class = ReactJSForm
+    template_name = 'dsrs_viz/react_js_form.html'
+
 #----------------------------------------------------------
 
 # def d3_react_js_list_view(request):
@@ -123,3 +134,6 @@ class D3ReactJSDetail(View):
             {'d3_react_js': d3_react_js}
         )
 
+class D3ReactJSCreate(ObjectCreateMixin, View):
+    form_class = D3ReactJSForm
+    template_name = 'dsrs_viz/d3_react_js_form.html'

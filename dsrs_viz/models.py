@@ -7,6 +7,8 @@ class D3_js(models.Model):
     heading = models.TextField(unique=True)
     description = models.TextField(unique=False)
     js_code = models.TextField(unique=False)
+    notes = models.TextField(unique=False, default='Please enter some notes')
+    author = models.CharField(unique=False, max_length=255, default='Mohit Gupta')
 
     def __str__(self):
         return f'{self.figure_no}  -  {self.library_name}  -  {self.heading})'
@@ -33,6 +35,8 @@ class React_js(models.Model):
     heading = models.TextField(unique=True)
     description = models.TextField(unique=False)
     js_code = models.TextField(unique=False)
+    notes = models.TextField(unique=False, default='Please enter some notes')
+    author = models.CharField(unique=False, max_length=255, default='Mohit Gupta')
 
     def __str__(self):
         return f'{self.figure_no}  -  {self.library_name}  -  {self.heading})'
@@ -59,6 +63,9 @@ class D3_react_js(models.Model):
     heading = models.TextField(unique=True)
     description = models.TextField(unique=False)
     js_code = models.TextField(unique=False)
+    notes = models.TextField(unique=False, default='Please enter some notes')
+    author = models.CharField(unique=False, max_length=255, default='Mohit Gupta')
+
 
     def __str__(self):
         return f'{self.figure_no}  -  {self.library_name}  -  {self.heading})'

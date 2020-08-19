@@ -6,11 +6,17 @@
 
 {% block content %}
 
-    <h1>
-        React JS List
-    </h1>
+     {% block content-header %}
+        <div class="database-headers">
+            <h3> Data Table: React JS</h3>
+                <a href="{% url 'dsrs_viz_react_js_create_urlpattern' %}">
+                    <button type="button" class="btn btn-primary">Create new entry</button>
+                </a>
+        </div>
+     {% endblock %}
 
-    <ul>
+
+    {% block content-table %}
         {% for react_js in react_js_list %}
             <div class="table-responsive">
                 <li>
@@ -21,6 +27,6 @@
         {% endfor %}
 
 
-    </ul>
+    {% endblock %}
 
 {% endblock %}

@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dsrs_viz.views import (D3JSList,
-                            ReactJSList,
-                            D3ReactJSList,
-                            D3JSDetail, ReactJSDetail, D3ReactJSDetail)
+from dsrs_viz.views import (D3JSList, ReactJSList, D3ReactJSList,
+                            D3JSDetail, ReactJSDetail, D3ReactJSDetail,
+                            D3JSCreate, ReactJSCreate, D3ReactJSCreate)
 
 
 # The url pattern names will be helpful while pointing back from href attribute
@@ -28,6 +27,8 @@ urlpatterns = [
     path('d3_js/<int:pk>/',
          D3JSDetail.as_view(),
          name='dsrs_viz_d3_js_detail_urlpattern'),
+    path('d3_js/create/', D3JSCreate.as_view(),
+         name='dsrs_viz_d3_js_create_urlpattern'),
 
 
 
@@ -36,6 +37,8 @@ urlpatterns = [
          name='dsrs_viz_react_js_list_urlpattern'),
     path('react_js/<int:pk>/', ReactJSDetail.as_view(),
          name='dsrs_viz_react_js_detail_urlpattern'),
+    path('react_js/create/', ReactJSCreate.as_view(),
+         name='dsrs_viz_react_js_create_urlpattern'),
 
 
 
@@ -44,4 +47,6 @@ urlpatterns = [
          name='dsrs_viz_d3_react_js_list_urlpattern'),
     path('d3_react_js/<int:pk>/', D3ReactJSDetail.as_view(),
          name='dsrs_viz_d3_react_js_detail_urlpattern'),
+    path('d3_react_js/create/', D3ReactJSCreate.as_view(),
+         name='dsrs_viz_d3_react_js_create_urlpattern'),
 ]

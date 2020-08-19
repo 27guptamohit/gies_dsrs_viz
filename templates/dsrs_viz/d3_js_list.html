@@ -6,11 +6,18 @@
 
 {% block content %}
 
-    <h1>
-        D3 JS List
-    </h1>
+         {% block content-header %}
+        <div class="database-headers">
+            <h3> Data Table: D3 JS</h3>
+                <a href="{% url 'dsrs_viz_d3_js_create_urlpattern' %}">
+                    <button type="button" class="btn btn-primary">Create new entry</button>
+                </a>
+        </div>
+     {% endblock %}
 
-    <ul>
+
+    {% block content-table %}
+
         {% for d3_js in d3_js_list %}
             <div class="table-responsive">
                 <li>
@@ -18,8 +25,12 @@
                 </li>
             </div>
 
-
         {% endfor %}
-    </ul>
+
+    {% endblock %}
+
+
+
+
 
 {% endblock %}

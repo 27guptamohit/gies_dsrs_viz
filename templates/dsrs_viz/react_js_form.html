@@ -1,0 +1,61 @@
+<!--I am inheriting this template into the parent template base.html-->
+{% extends 'dsrs_viz/base.html' %}
+
+{% block title %}
+    Create entry in React Data Table
+{% endblock %}
+
+
+{% block content %}
+    <form
+            action="{% url 'dsrs_viz_react_js_create_urlpattern' %}"
+            method="post">
+        <div class="database-headers">
+            <h4>
+                Please enter the data for new entry below:
+            </h4>
+            <h6>
+                You can also scroll from the mouse towards left or right to see more columns
+
+            </h6>
+            <button type="submit" class="btn btn-primary">Create Entry</button>
+
+        </div>
+
+        <div class="table-responsive">
+
+            {% csrf_token %}
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col" class='table-name-view'>Figure Number</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Library Name</th>
+                        <th scope="col" class='table-name-view'>Heading</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">JS Code</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ form.figure_no }}</td>
+                        <td>{{ form.author }}</td>
+                        <td>{{ form.library_name }}</td>
+                        <td>{{ form.heading }}</td>
+                        <td>{{ form.description }}</td>
+                        <td>{{ form.js_code }}</td>
+                        <td>{{ form.notes }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+
+    </form>
+
+{% endblock %}
